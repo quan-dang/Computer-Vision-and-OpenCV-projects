@@ -12,5 +12,5 @@ Blur background in live streaming using MASK R-CNN
 ## How to run
 
 ```
-python instance_segmentation.py --mask-rcnn mask-rcnn-coco --kernel 41 
+python instance_segmentation.py --mask_rcnn mask-rcnn-coco --kernel 41 
 ```
