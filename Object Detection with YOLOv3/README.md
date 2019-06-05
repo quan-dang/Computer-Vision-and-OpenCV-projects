@@ -9,6 +9,12 @@
 
 ## How to run
 
+1. __Step 1__: Preparation
+
+Download __yolov3.cfg__ and __yolov3.weights__ from [Darknet](https://pjreddie.com/darknet/yolo/), put them under __yolo-coco/__.
+
+2. __Step 2__: Run and evaluate the model
+
 * Run YOLO object detection in videos
 
 ```
