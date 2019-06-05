@@ -1,11 +1,11 @@
 import cv2
 
 # load cascade classifiers for face and eyepair detection
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
-eyepair_cascade = cv2.CascadeClassifier("haarcascade_mcs_eyepair_big.xml")
+face_cascade = cv2.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
+eyepair_cascade = cv2.CascadeClassifier("haarcascades/haarcascade_mcs_eyepair_big.xml")
 
 # load glasses image
-img_glasses = cv2.imread("glasses.png", -1) # -1 for alpha channel (if exists)
+img_glasses = cv2.imread("images/glasses.png", -1) # -1 for alpha channel (if exists)
 
 # create the mask for the classes
 img_glasses_mask = img_glasses[:, :, 3]
