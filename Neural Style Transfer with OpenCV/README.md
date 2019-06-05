@@ -7,4 +7,4 @@ python NRSTransfer.py --image images/me.jpg --model models/instance_norm/candy.t
 ```
 
 ## Demo 
-![]{output.png}
+![](output.png)
