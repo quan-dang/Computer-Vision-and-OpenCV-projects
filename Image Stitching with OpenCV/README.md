@@ -8,18 +8,22 @@
 
 ## How to run the program
   1) image_stitching_simple.py
+
     ```
     python image_stitching.py --images images/scottsdale --output output.png
+    
     ```
     __OR__
+
     ```
     python image_stitching.py --images images/scottsdale --output output.png --crop 0
     ```
   
   2) image_stitching.py
+
     ```
     python image_stitching.py --images images/scottsdale --output output.png --crop 1
     ```
-    
+
 ## Demo
 ![](output.png)
