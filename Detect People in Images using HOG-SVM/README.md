@@ -7,4 +7,4 @@ python DetectPeople.py --image images/image3.jpg
 ```
 
 ## Demo
-![Screenshot](output.jpg)
+![](output.jpg)
