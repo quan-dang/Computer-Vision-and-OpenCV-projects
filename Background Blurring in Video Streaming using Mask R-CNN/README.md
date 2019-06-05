@@ -1,6 +1,7 @@
-# Instance Segmentation using Mask RCNN
+# Instance Segmentation using Mask R-CNN
+Blur background in live streaming using MASK R-CNN
 
-# Project structure
+## Project structure
 
 1. __mask-rcnn-coco/__: Mask R-CNN model directory
     - __frozen_inference_graph.pb__: MASK R-CNN model weights (pre-traind on COCO dataset)
@@ -11,5 +12,5 @@
 ## How to run
 
 ```
-python instance_segmentation.py 
+python instance_segmentation.py --mask-rcnn mask-rcnn-coco --kernel 41 
 ```
