@@ -31,6 +31,6 @@ python TrainUnet.py
 ```
 
 ## Demo 
-![Sample](sample.tif) ![Sample segmented using UNET](sample_pred.png)
+![Sample segmented using UNET](sample_pred.png)
 
 
