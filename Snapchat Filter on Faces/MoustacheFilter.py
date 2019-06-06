@@ -2,19 +2,16 @@ import cv2
 
 # load cascade classifiers for face and eyepair detection
 face_cascade = cv2.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
-eyepair_cascade = cv2.CascadeClassifier("haarcascades/haarcascade_mcs_eyepair_big.xml")
+nose_cascade = cv2.CascadeClassifier("haarcascades/haarcascade_mcs_nose.xml")
 
-# load glasses image
-img_glasses = cv2.imread("images/glasses.png", -1) # -1 for alpha channel (if exists)
+# load moustache image
+img_moustache = cv2.imread("images/moustache.png", -1) # -1 for alpha channel (if exists)
 
 # create the mask for the classes
-img_glasses_mask = img_glasses[:, :, 3]
+img_moustache_mask = img_moustache[:, :, 3]
 
 #　convert glasses image to BGR, discard alpha channel
-img_glasses = img_glasses[:, :, 0:3]
-
-# load the input image to apply glasses filter
-# face = cv2.imread("face.jpg")
+img_moustache = img_moustache[:, :, 0:3]
 
 # create VideoCapture object to get frames from webcam
 vs = cv2.VideoCapture(0)
@@ -39,35 +36,35 @@ while True:
     # loop over face detections
     for (x, y, w, h) in faces:
         # create the ROIs
-        roi_gray = gray[y: y+h, x: x+w]
+        roi_gray = gray[y: y + h, x: x + w]
         roi_color = frame[y:y + h, x:x + w]
 
         # detect the eyepair inside the detected face
-        eyepairs = eyepair_cascade.detectMultiScale(roi_gray)
+        noses = nose_cascade.detectMultiScale(roi_gray)
 
         # loop over the eyepairs detections (inside the detected face)
-        for (ex, ey, ew, eh) in eyepairs:
+        for (nx, ny, nw, nh) in noses:
             # calculate the coordinates where the glasses will be placed
-            x1 = int(ex - ew / 10) 
-            x2 = int((ex + ew) + ew / 10)
-            y1 = int(ey)
-            y2 = int(ey + eh + eh / 2)
+            x1 = int(nx - nw / 2) 
+            x2 = int(nx + nw / 2 + nw)
+            y1 = int(ny + nh / 2 + nh / 8)
+            y2 = int(ny + nh + nh / 4 + nh / 6)
 
             if x1 < 0 or x2 < 0 or x2 > w or y2 > h:
                 continue
             
             # calculate the width and height of the image with the glasses
-            img_glasses_res_width = int(x2 - x1)
-            img_glasses_res_height = int(y2 - y1)
+            img_moustache_res_width = int(x2 - x1)
+            img_moustache_res_height = int(y2 - y1)
 
             # resize the mask to be equal to the region where the glasses will be placed
-            mask = cv2.resize(img_glasses_mask, (img_glasses_res_width, img_glasses_res_height))
+            mask = cv2.resize(img_moustache_mask, (img_moustache_res_width, img_moustache_res_height))
 
             # create the inverse of the mask
             mask_inv = cv2.bitwise_not(mask)
 
             # resize the img_glasses to the previously calculated size
-            img = cv2.resize(img_glasses, (img_glasses_res_width, img_glasses_res_height))
+            img = cv2.resize(img_moustache, (img_moustache_res_width, img_moustache_res_height))
 
             # take the ROI from the BGR image
             roi = roi_color[y1:y2, x1:x2]
@@ -96,8 +93,3 @@ while True:
 cv2.destroyAllWindows()
 vs.release()
 
-        
- 
-
-
-    
