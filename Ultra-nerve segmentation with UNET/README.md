@@ -1,4 +1,4 @@
-# Ultra-verve segmentation with UNET
+# Ultra-nerve segmentation with UNET
 
 ## Dataset
 This project use [Ultrasound Nerve Segmentation dataset](https://www.kaggle.com/c/ultrasound-nerve-segmentation) from Kaggle.
